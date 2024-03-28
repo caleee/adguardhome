@@ -1,0 +1,47 @@
+name: auto arrangement
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-script-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup environment
+        run: |
+          chmod +x ./script/rule.sh
+
+      - name: Run integration script
+        run: |
+          set -e
+          ./script/rule.sh
+
+      - name: Move filter.txt to filters directory
+        run: |
+          set -e
+          mv filter.txt filters/filter.txt
+
+      - name: Set up git
+        run: |
+          set -e
+          git config user.email "${{ secrets.GIT_USER_EMAIL }}"
+          git config user.name "${{ secrets.GIT_USER_NAME }}"
+
+      - name: Commit and push if there are changes
+        run: |
+          git add filters/filter.txt
+          if ! git diff --staged --quiet filters/; then
+            git commit -m "Automated filter update"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
