@@ -15,3 +15,7 @@ https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblockdns
 ## 项目简介
 
 每日对上游过滤规则进行合并/筛选/去重/排序，简化规则管理及便于使用github代理加速下载。
+
+## 地址
+直连：https://raw.githubusercontent.com/caleee/adguardhome/main/filters/filter.txt
+国内代理：https://gh-proxy.com/https://raw.githubusercontent.com/caleee/adguardhome/main/filters/filter.txt
