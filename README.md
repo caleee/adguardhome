@@ -18,6 +18,8 @@ https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblockdns
 
 ## 地址
 
-直连：https://raw.githubusercontent.com/caleee/adguardhome_filter_list/refs/heads/main/filters/filter.txt
+直连：
+https://raw.githubusercontent.com/caleee/adguardhome_filter_list/refs/heads/main/filters/filter.txt
 
-国内代理：https://gh-proxy.com/https://raw.githubusercontent.com/caleee/adguardhome_filter_list/refs/heads/main/filters/filter.txt
+国内代理：
+https://gh-proxy.com/https://raw.githubusercontent.com/caleee/adguardhome_filter_list/refs/heads/main/filters/filter.txt
