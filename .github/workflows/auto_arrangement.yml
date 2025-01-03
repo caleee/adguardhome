@@ -6,8 +6,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-script-and-commit:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -15,22 +16,16 @@ jobs:
           fetch-depth: 1
 
       - name: Setup environment
-        run: |
-          chmod +x ./script/rule.sh
+        run: chmod +x ./script/rule.sh
 
       - name: Run integration script
-        run: |
-          set -e
-          ./script/rule.sh
+        run: ./script/rule.sh
 
       - name: Move filter.txt to filters directory
-        run: |
-          set -e
-          mv filter.txt filters/filter.txt
+        run: mv filter.txt filters/filter.txt
 
       - name: Set up git
         run: |
-          set -e
           git config user.email "${{ secrets.GIT_USER_EMAIL }}"
           git config user.name "${{ secrets.GIT_USER_NAME }}"
 
